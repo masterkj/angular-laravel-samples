@@ -1,0 +1,21 @@
+
+<div class="sidebar-wrapper">
+  <div class="logo">
+    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+      <div class="logo-image-small">
+        <img src="https://media-exp1.licdn.com/dms/image/C560BAQEWPlUCXwu9ig/company-logo_200_200/0?e=2159024400&v=beta&t=ZiQ9q0cYR2cJw31DpGuTCi0mL-jRBtgNerzxzlgc774">
+      </div>
+    </a>
+    <a href="https://www.creative-tim.com" class="simple-text logo-normal">
+      Focus Academy
+    </a>
+  </div>
+    <ul class="nav">
+        <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
+            <a [routerLink]="[menuItem.path]">
+                <i class="nc-icon {{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li>
+    </ul>
+</div>
