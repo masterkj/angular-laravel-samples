@@ -34,7 +34,8 @@ class StudentController extends Controller
         $validator = Validator::make($data, [
             'first_name' => 'required|max:50',
             'last_name' => 'required|max:50',
-            'date_of_birth' => 'date_format'
+            'date_of_birth' => 'date_format',
+            'classes_id' => 'required'
         ]);
 
         if ($validator->fails()) {

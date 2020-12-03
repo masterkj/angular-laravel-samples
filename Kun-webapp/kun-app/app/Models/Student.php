@@ -17,6 +17,7 @@ class Student extends Model
     protected $fillable = [
         'first_name',
         'last_name',
+        'classes_id'
     ];
 
     /**
@@ -26,17 +27,16 @@ class Student extends Model
      */
     protected $casts = [
         'date_of_birth' => 'date',
-        'class_id' => 'int'
+        'classes_id' => 'int'
     ];
 
     protected $attributes = array(
         'date_of_birth' => null,
-        'class_id' => null
     );
 
 
     public function Class()
     {
-        return $this->belongsTo(CLasses::class, 'class_id');
+        return $this->belongsTo(CLasses::class, 'classes_id');
     }
 }

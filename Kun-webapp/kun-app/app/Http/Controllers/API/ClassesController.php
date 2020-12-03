@@ -20,6 +20,8 @@ class ClassesController extends Controller
     {
         $classes = Classes::all();
         return response(['classes' => AppResource::collection($classes), 'message' => 'Retrieved successfully'], 200);
+
+        Classes::find(1)->students;
     }
 
     /**
@@ -85,5 +87,12 @@ class ClassesController extends Controller
         $class->delete();
 
         return response(['message' => 'Deleted']);
+    }
+
+    public function showStudents($id)
+    {
+
+        $class = Classes::find($id);
+        return response(['students' => new AppResource($class->students), 'message' => 'Update successfully'], 200);
     }
 }

@@ -23,3 +23,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('class', ClassesController::class);
 Route::apiResource('student', StudentController::class);
+
+Route::get('class/show/{id}', [ClassesController::class, 'showStudents']);

@@ -18,8 +18,8 @@ class CreateStudentsTable extends Migration
             $table->timestamps();
             $table->string('first_name')->require();
             $table->string('last_name')->require();
-            $table->date('date_of_birth')->default(null);
-            $table->unsignedBigInteger('class_id')->require();
+            $table->date('date_of_birth')->nullable();
+            $table->unsignedBigInteger('classes_id')->require();
         });
     }
 
