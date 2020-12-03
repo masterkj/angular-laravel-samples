@@ -17,7 +17,8 @@ class Student extends Model
     protected $fillable = [
         'first_name',
         'last_name',
-        'classes_id'
+        'classes_id',
+        'date_of_birth'
     ];
 
     /**
@@ -26,7 +27,6 @@ class Student extends Model
      * @var array
      */
     protected $casts = [
-        'date_of_birth' => 'date',
         'classes_id' => 'int'
     ];
 
