@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Adapter } from '../../utils/Adapter'
 
 export class StudyClass {
-  public status: string;
 
   constructor(
     public id: number,
@@ -10,10 +9,9 @@ export class StudyClass {
     public name: string,
     public created: Date,
     public maximum_students: number,
-    status: boolean,
+    public status: boolean,
     public description: string
   ) {
-    (status == true) ? this.status = "opened" : this.status = 'closed'
   }
 }
 

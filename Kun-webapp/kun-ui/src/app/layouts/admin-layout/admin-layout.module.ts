@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
 
-import { UserComponent }            from '../../pages/user/user.component';
 import { TableComponent }           from '../../pages/table/table.component';
 
 @NgModule({
@@ -15,7 +14,6 @@ import { TableComponent }           from '../../pages/table/table.component';
     FormsModule,
   ],
   declarations: [
-    UserComponent,
     TableComponent,
   ]
 })

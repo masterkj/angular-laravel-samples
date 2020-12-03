@@ -1,0 +1,101 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Add student</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="form-group">
+                <label>first name</label>
+                <input type="text" class="form-control" [(ngModel)]="studentObject.firstName"
+                    [ngModelOptions]="{standalone: true}" placeholder="please enter the student first name">
+            </div>
+            <div class="form-group">
+                <label>last name</label>
+                <input type="text" class="form-control" [(ngModel)]="studentObject.lastName"
+                    [ngModelOptions]="{standalone: true}" placeholder="please enter the class code">
+            </div>
+
+            <div class="form-group">
+                <div class="input-group">
+                    <label>birth date</label>
+                    <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="studentObject.dateOfBirth"
+                        ngbDatepicker [ngModelOptions]="{standalone: true}">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>student class</label>
+                <select aria-placeholder="choose the student class" [ngModelOptions]="{standalone: true}"
+                    [(ngModel)]="studentObject.classId" class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-outline-dark" (click)="save()">submit</button>
+    </div>
+</ng-template>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Students</h4>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class=" text-primary">
+                            <th class="text-center" *ngFor="let studentTableHeader of studentTableHeaders">
+                                {{studentTableHeader}}
+                            </th>
+                            <th class="text-center">
+                                Actions
+                            </th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let stuyClass of studyClasses">
+                                <td class="text-center">
+                                    {{stuyClass.firstName}}
+                                </td>
+                                <td class="text-center">
+                                    {{stuyClass.lastName}}
+                                </td>
+                                <td class="text-center">
+                                    {{stuyClass.birthOfDate}}
+                                </td>
+                                <!-- <td class="text-center">
+                                    {{stuyClass.className}}
+                                </td> -->
+                                <td class="text-center" class="text-center">
+                                    <button class="btn btn-sm btn-secondary btn-fab btn-icon btn-round ml-1">
+                                        <i class="fa fa-edit"></i> </button>
+                                    <button (click)="delete(stuyClass)"
+                                        class="btn btn-sm btn-danger btn-fab btn-icon btn-round ml-1">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-right">
+                    <button (click)="open(content)" class="btn btn-sm btn-primary btn-fab ">
+                        add student
+                        <i class="fa fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
