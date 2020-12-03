@@ -8,13 +8,13 @@ export class Student {
         public id: number,
         public firstName: string,
         public lastName: string,
-        public dateOfBirth: Date,
+        public dateOfBirth: string,
         public classId: number
     ) {
     }
 }
 
-export class StudentResponseModel {
+export class StudentRequestModel {
     constructor(
         public id: number,
         public first_name: string,
@@ -42,10 +42,13 @@ export class StudentResponseAdapter implements Adapter<Student> {
     }
 }
 
-export class StudentRequestAdabter implements Adapter<StudentResponseModel> {
+@Injectable({
+    providedIn: 'root'
+})
+export class StudentRequestAdabter implements Adapter<StudentRequestModel> {
 
-    adapt(item: any): StudentResponseModel {
-        return new StudentResponseModel(
+    adapt(item: any): StudentRequestModel {
+        return new StudentRequestModel(
             item.id,
             item.firstName,
             item.lastName,

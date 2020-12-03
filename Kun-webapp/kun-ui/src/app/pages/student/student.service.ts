@@ -13,7 +13,7 @@ interface StudentWholeResponse {
     providedIn: 'root'
 })
 
-export class StudyClassService {
+export class StudentService {
 
     private baseUrl: string = 'http://localhost:8000/api/';
     private apiUrl: string = this.baseUrl + 'student'
@@ -33,7 +33,7 @@ export class StudyClassService {
     save(studentObject: Student): Observable<Student> {
         return this.http.post(this.apiUrl, this.requestAdapter.adapt(studentObject)).pipe(
             // Adapt each item in the raw data array
-            map((data: any) => this.responseAdapter.adapt(data.class)),
+            map((data: any) => this.responseAdapter.adapt(data.student)),
         );
     }
 

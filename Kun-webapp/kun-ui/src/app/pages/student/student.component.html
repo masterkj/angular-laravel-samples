@@ -6,41 +6,32 @@
         </button>
     </div>
     <div class="modal-body">
-        <form>
-            <div class="form-group">
-                <label>first name</label>
-                <input type="text" class="form-control" [(ngModel)]="studentObject.firstName"
-                    [ngModelOptions]="{standalone: true}" placeholder="please enter the student first name">
-            </div>
-            <div class="form-group">
-                <label>last name</label>
-                <input type="text" class="form-control" [(ngModel)]="studentObject.lastName"
-                    [ngModelOptions]="{standalone: true}" placeholder="please enter the class code">
-            </div>
-
-            <div class="form-group">
-                <div class="input-group">
-                    <label>birth date</label>
-                    <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="studentObject.dateOfBirth"
-                        ngbDatepicker [ngModelOptions]="{standalone: true}">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>student class</label>
-                <select aria-placeholder="choose the student class" [ngModelOptions]="{standalone: true}"
-                    [(ngModel)]="studentObject.classId" class="form-control">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-        </form>
+        <div class="form-group">
+            <label>first name</label>
+            <input type="text" class="form-control" [(ngModel)]="studentObject.firstName"
+                [ngModelOptions]="{standalone: true}" placeholder="please enter the student first name">
+        </div>
+        <div class="form-group">
+            <label>last name</label>
+            <input type="text" class="form-control" [(ngModel)]="studentObject.lastName"
+                [ngModelOptions]="{standalone: true}" placeholder="please enter the class code">
+        </div>
+        <div class="form-group">
+            <label>date of birth</label>
+            <input placeholder="yyyy-mm-dd" type="text" class="form-control" [(ngModel)]="studentObject.dateOfBirth"
+                [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+            <label>student class</label>
+            <select aria-placeholder="choose the student class" [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="studentObject.classId" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-primary btn-outline-dark" (click)="save()">submit</button>
@@ -64,23 +55,20 @@
                             </th>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let stuyClass of studyClasses">
+                            <tr *ngFor="let student of students">
                                 <td class="text-center">
-                                    {{stuyClass.firstName}}
+                                    {{student.firstName}}
                                 </td>
                                 <td class="text-center">
-                                    {{stuyClass.lastName}}
+                                    {{student.lastName}}
                                 </td>
                                 <td class="text-center">
-                                    {{stuyClass.birthOfDate}}
+                                    {{student.dateOfBirth}}
                                 </td>
-                                <!-- <td class="text-center">
-                                    {{stuyClass.className}}
-                                </td> -->
                                 <td class="text-center" class="text-center">
                                     <button class="btn btn-sm btn-secondary btn-fab btn-icon btn-round ml-1">
                                         <i class="fa fa-edit"></i> </button>
-                                    <button (click)="delete(stuyClass)"
+                                    <button (click)="delete(student)"
                                         class="btn btn-sm btn-danger btn-fab btn-icon btn-round ml-1">
                                         <i class="fa fa-trash"></i>
                                     </button>

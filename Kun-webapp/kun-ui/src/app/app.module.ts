@@ -15,7 +15,8 @@ import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbDate} from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     // import HttpClientModule after BrowserModule.
     HttpClientModule,
-    NgbModule
+    FormsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

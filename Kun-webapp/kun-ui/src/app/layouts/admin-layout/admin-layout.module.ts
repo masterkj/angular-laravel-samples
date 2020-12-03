@@ -5,7 +5,8 @@ import { FormsModule } from '@angular/forms';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
 
-import { TableComponent }           from '../../pages/table/table.component';
+import { TableComponent } from '../../pages/table/table.component';
+import { StudentComponent } from '../../pages/student/student.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { TableComponent }           from '../../pages/table/table.component';
   ],
   declarations: [
     TableComponent,
+    StudentComponent
   ]
 })
 
-export class AdminLayoutModule {}
+export class AdminLayoutModule { }
