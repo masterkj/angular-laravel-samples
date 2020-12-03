@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\ClassesController;
+use App\Http\Controllers\API\StudentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::apiResource('class', ClassesController::class);
+Route::apiResource('student', StudentController::class);

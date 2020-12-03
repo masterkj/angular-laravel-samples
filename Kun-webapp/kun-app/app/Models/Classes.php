@@ -9,7 +9,10 @@ class Classes extends Model
 {
     use HasFactory;
 
-
+    protected $attributes = array(
+        'maximum_students' => 10,
+        'status' => true
+    );
     /**
      * The attributes that are mass assignable.
      *
@@ -19,6 +22,8 @@ class Classes extends Model
         'code',
         'name',
         'description',
+        'maximum_students',
+        'status'
     ];
 
     /**
@@ -35,8 +40,9 @@ class Classes extends Model
         'status' => 'boolean'
     ];
 
-    protected $attributes = array(
-        'maximum_students' => 10,
-        'status' => true
-    );
+
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
 }

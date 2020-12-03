@@ -3,13 +3,12 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\AppResource;
-use App\Models\Classes;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Http\Resources\AppResource;
 use Illuminate\Support\Facades\Validator;
 
-
-class ClassesController extends Controller
+class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +17,8 @@ class ClassesController extends Controller
      */
     public function index()
     {
-        $classes = Classes::all();
-        return response(['classes' => AppResource::collection($classes), 'message' => 'Retrieved successfully'], 200);
+        $students = Student::all();
+        return response(['students' => AppResource::collection($students), 'message' => 'Retrieved successfully'], 200);
     }
 
     /**
@@ -33,56 +32,56 @@ class ClassesController extends Controller
         $data = $request->all();
 
         $validator = Validator::make($data, [
-            'code' => 'required|max:50|unique:classes',
-            'name' => 'required|max:50',
-            'maximum_students' => 'numeric|min:1|max:10'
+            'first_name' => 'required|max:50',
+            'last_name' => 'required|max:50',
+            'date_of_birth' => 'date_format'
         ]);
 
         if ($validator->fails()) {
             return response(['error' => $validator->errors(), 'Validation Error']);
         }
 
-        $class = Classes::create($data);
+        $student = Student::create($data);
 
-        return response(['class' => new AppResource($class), 'message' => 'Created successfully'], 201);
+        return response(['student' => new AppResource($student), 'message' => 'Created successfully'], 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Classes  $classes
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function show(Classes $classes)
+    public function show(Student $student)
     {
-        return response(['classes' => new AppResource($classes), 'message' => 'Retrieved successfully'], 200);
+        return response(['students' => new AppResource($student), 'message' => 'Retrieved successfully'], 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Classes  $classes
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Classes $classes)
+    public function update(Request $request, Student $student)
     {
-        $classes->update($request->all());
+        $student->update($request->all());
 
-        return response(['classes' => new AppResource($classes), 'message' => 'Update successfully'], 200);
+        return response(['student' => new AppResource($student), 'message' => 'Update successfully'], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Classes  $classes
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $class = Classes::find($id);
+        $student = Student::find($id);
 
-        $class->delete();
+        $student->delete();
 
         return response(['message' => 'Deleted']);
     }
