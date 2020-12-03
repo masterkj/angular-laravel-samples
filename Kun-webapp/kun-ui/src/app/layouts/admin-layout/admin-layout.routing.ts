@@ -4,6 +4,6 @@ import { UserComponent } from '../../pages/user/user.component';
 import { TableComponent } from '../../pages/table/table.component';
 
 export const AdminLayoutRoutes: Routes = [
-    { path: 'user',           component: UserComponent },
-    { path: 'table',          component: TableComponent },
+    { path: 'class', component: TableComponent },
+    { path: 'student', component: UserComponent },
 ];

@@ -1,3 +1,54 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add Class</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label>Class name</label>
+        <input type="text" class="form-control" [(ngModel)]="studyClassObject.name"
+          [ngModelOptions]="{standalone: true}" placeholder="please enter the class name">
+      </div>
+      <div class="form-group">
+        <label>Class code</label>
+        <input type="text" class="form-control" [(ngModel)]="studyClassObject.code"
+          [ngModelOptions]="{standalone: true}" placeholder="please enter the class code">
+      </div>
+      <div class="form-group">
+        <label>Class maximum students</label>
+        <input type="text" class="form-control" [(ngModel)]="studyClassObject.maximum_students"
+          [ngModelOptions]="{standalone: true}" placeholder="please enter the class maximum students number">
+      </div>
+      <div class="form-group">
+        <label class="form-check-inline">
+          class status:
+        </label>
+        <label class="form-check-inline">
+          <input class="form-check-input" [ngModelOptions]="{standalone: true}" type="radio" [value]="true"
+            [(ngModel)]="studyClassObject.status">
+          opened
+        </label>
+        <label class="form-check-inline">
+          <input class="form-check-input" [ngModelOptions]="{standalone: true}" type="radio" [value]="false"
+            [(ngModel)]="studyClassObject.status">
+          closed
+        </label>
+      </div>
+      <div class="form-group">
+
+        <textarea class="form-control" placeholder="please enter class description"
+          [(ngModel)]="studyClassObject.description" [ngModelOptions]="{standalone: true}" rows="3"></textarea>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary btn-outline-dark" (click)="save()">submit</button>
+  </div>
+</ng-template>
 <div class="row">
   <div class="col-md-12">
     <div class="card">
@@ -38,7 +89,7 @@
                   </button>
                   <button class="btn btn-sm btn-secondary btn-fab btn-icon btn-round ml-1">
                     <i class="fa fa-edit"></i> </button>
-                  <button class="btn btn-sm btn-danger btn-fab btn-icon btn-round ml-1">
+                  <button (click)="delete(stuyClass)" class="btn btn-sm btn-danger btn-fab btn-icon btn-round ml-1">
                     <i class="fa fa-trash"></i>
                   </button>
                 </td>
@@ -47,7 +98,7 @@
           </table>
         </div>
         <div class="text-right">
-          <button class="btn btn-sm btn-primary btn-fab ">
+          <button (click)="open(content)" class="btn btn-sm btn-primary btn-fab ">
             add class
             <i class="fa fa-plus"></i>
           </button>
